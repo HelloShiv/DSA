@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#define SPACE 5
 
 typedef struct node{
 	int data;
@@ -41,25 +42,25 @@ int  maxOfLeft(node* root ){
 		return root->data;
 }
 
-node* remove(node* root ,  int data){
-	if(root == NULL)
-		return root;
-	if(root->data < data)
-		root->right = remove(root->right,data);
-	else if (root->data > data)
-		root->left = remove(root->left,data);
-	else{
-		if(!root->left)
-			return root->right;
-		else if(!root->right)
-			return root->left;
-		else
-			root->data = maxOfLeft(root->left);
-			root->left = remove(root->left,root->data);
-	
-	} 
-	return root;
-}
+ node* remove(node* root ,  int data){
+ 	if(root == NULL)
+ 		return root;
+ 	if(root->data < data)
+ 		root->right = remove(root->right,data);
+ 	else if (root->data > data)
+ 		root->left = remove(root->left,data);
+ 	else{
+ 		if(!root->left)
+ 			return root->right;
+ 		else if(!root->right)
+ 			return root->left;
+ 		else
+ 			root->data = maxOfLeft(root->left);
+ 			root->left = remove(root->left,root->data);
+
+ 	} 
+ 	return root;
+ }
 
 
 node* inverse(node* root){
@@ -70,6 +71,19 @@ node* inverse(node* root){
 	root->left = r;
 	root->right = l;
 	return root;
+}
+
+void print2D(node *root,int space){
+	if(root == NULL)
+		return;
+	space +=SPACE;
+	print2D(root->right,space);
+	printf("\n");
+	for(int i = 0 ; i < space ; i++)
+		printf(" ");
+	printf("%d \n", root->data);
+	print2D(root->left,space);
+
 }
 
 int main(){
@@ -105,9 +119,10 @@ int main(){
 	*/
 
 //	inorder(root);
-	root = remove(root,50);
+        root = remove(root,50);
 	printf("\n\n");
 	inorder(root);
-
+	printf("\n\n");
+	print2D(root,5);
 	return 0;
 }
