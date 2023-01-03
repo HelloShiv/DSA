@@ -1,5 +1,5 @@
 // implement dj using priority queue
-// 
+// somewhat like BFS i mean somewhat NOT exactly
 // 
 // 
 // 
