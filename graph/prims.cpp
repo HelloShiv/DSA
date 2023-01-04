@@ -32,6 +32,7 @@ class Solution
                 int nNode = i[0];
                 if(!vis[nNode])
                 pq.push({nwt,nNode});
+//              self tip if you marked it as visited now then problem will occur , how will min heap work
             }
         }
     
