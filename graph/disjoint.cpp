@@ -25,16 +25,16 @@ class DisjointSet{
         if(ulp_u == ulp_v) 
             return;
         if( rank[ulp_u] < rank[ulp_v]){
-            parent[u] = ulp_v;
+            parent[ulp_u] = ulp_v;
             rank[ulp_v]++;
         }
         else if (rank[ulp_v] < rank[ulp_u]){
-            parent[v] = ulp_u;
+            parent[ulp_v] = ulp_u;
             rank[ulp_u]++;
         }
         else{
-            parent[u] = ulp_v;
-            rank[ulp_v]++;
+            parent[ulp_v] = ulp_u;
+            rank[ulp_u]++;
         }
     }
 };
